@@ -13,6 +13,7 @@ dynamic = ["version"]
 dependencies = [
     "click>=8.1.8",
     "copick@git+https://github.com/copick/copick.git@49c3485",
+    "importlib-metadata>=8.7.0"
 ]
 authors = [
     { name = "Utz H. Ermel", email = "utz.ermel@czii.org" },
