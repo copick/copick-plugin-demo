@@ -28,11 +28,8 @@ Issues = "https://github.com/copick/copick-plugin-demo/issues"
 
 [project.optional-dependencies]
 test = [
-    "pooch>=1.8.2",
     "pytest>=8.4.1",
     "pytest-cov>=6.2.1",
-    "smbprotocol>=1.15.0",
-    "sshfs>=2025.2.0",
 ]
 dev = [
     "black>=25.1.0",
