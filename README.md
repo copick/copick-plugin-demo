@@ -95,7 +95,7 @@ def mypackage(ctx: click.Context, config: str, option: str, debug: bool):
    ```bash
    # Main CLI command
    copick mypackage --config config.json --option example
-   
+
    # Grouped commands
    copick inference mymodel-infer --config config.json --option example
    copick training mymodel-train --config config.json --option example

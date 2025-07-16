@@ -1,5 +1,4 @@
 import click
-
 from copick.cli.util import add_config_option, add_debug_option
 from copick.util.log import get_logger
 
@@ -32,7 +31,6 @@ def mymodel_infer(ctx: click.Context, config: str, option: str, debug: bool) -> 
 
     logger.info(f"Running mymodel with config: {config}, option: {option}, debug: {debug}")
     # Add your command logic here
-
 
 
 @click.command(short_help="A training command.")
@@ -119,6 +117,7 @@ def add_commands(cmd: click.Group) -> click.Group:
     cmd.add_command(myconverter)
 
     return cmd
+
 
 # CLI group for testing purposes
 tests_cli = add_commands(_cli)
