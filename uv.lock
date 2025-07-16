@@ -654,7 +654,7 @@ wheels = [
 [[package]]
 name = "copick"
 version = "1.7.0"
-source = { registry = "https://pypi.org/simple" }
+source = { git = "https://github.com/copick/copick.git?rev=49c3485#49c348520e16c1be03168afe9ecdcce5dc6e3f7a" }
 dependencies = [
     { name = "click", version = "8.1.8", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
     { name = "click", version = "8.2.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.10'" },
@@ -681,10 +681,6 @@ dependencies = [
     { name = "zarr", version = "2.18.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
     { name = "zarr", version = "2.18.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.10.*'" },
     { name = "zarr", version = "2.18.7", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/72/12/b7106986aa1654e0b4c271a694ea3839d7852c3784825d48a7e9584036a3/copick-1.7.0.tar.gz", hash = "sha256:3d0b4275c62de84595d75dad355ea0b8c3112a7f21a1da989cc991cb9a502b57", size = 5439383, upload-time = "2025-07-16T06:10:57.441Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/9b/10/81c84ba6eba4d8b38346264ad7532d1e15ded11990013f7927fab54db72d/copick-1.7.0-py3-none-any.whl", hash = "sha256:b6e09a0e454d8f7182e46fb5e158911713b5ac8ffdf031dab9f5133599b19951", size = 67249, upload-time = "2025-07-16T06:10:55.764Z" },
 ]
 
 [[package]]
@@ -719,7 +715,7 @@ test = [
 requires-dist = [
     { name = "black", marker = "extra == 'dev'", specifier = ">=25.1.0" },
     { name = "click", specifier = ">=8.1.8" },
-    { name = "copick", specifier = ">=1.7.0" },
+    { name = "copick", git = "https://github.com/copick/copick.git?rev=49c3485" },
     { name = "ipython", marker = "extra == 'dev'", specifier = ">=8.18.1" },
     { name = "notebook", marker = "extra == 'dev'", specifier = ">=7.4.3" },
     { name = "pooch", marker = "extra == 'test'", specifier = ">=1.8.2" },

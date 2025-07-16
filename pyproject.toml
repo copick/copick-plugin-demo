@@ -12,7 +12,7 @@ classifiers = [
 dynamic = ["version"]
 dependencies = [
     "click>=8.1.8",
-    "copick>=1.7.0",
+    "copick@git+https://github.com/copick/copick.git@49c3485",
 ]
 authors = [
     { name = "Utz H. Ermel", email = "utz.ermel@czii.org" },
