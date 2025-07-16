@@ -1,0 +1,150 @@
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[project]
+name = "copick-plugin-demo"
+requires-python = ">=3.9"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+]
+dynamic = ["version"]
+dependencies = [
+    "click>=8.1.8",
+    "copick>=1.7.0",
+]
+authors = [
+    { name = "Utz H. Ermel", email = "utz.ermel@czii.org" },
+]
+description = "Demo package for copick plugins."
+readme = "README.md"
+license = { file = "LICENSE" }
+keywords = ["cryoet", "cryo-et", "tomography", "annotation", "segmentation", "collaborative", "copick"]
+
+[project.urls]
+Repository = "https://github.com/copick/copick-plugin-demo.git"
+Issues = "https://github.com/copick/copick-plugin-demo/issues"
+
+[project.optional-dependencies]
+test = [
+    "pooch>=1.8.2",
+    "pytest>=8.4.1",
+    "pytest-cov>=6.2.1",
+    "smbprotocol>=1.15.0",
+    "sshfs>=2025.2.0",
+]
+dev = [
+    "black>=25.1.0",
+    "ipython>=8.18.1",
+    "notebook>=7.4.3",
+    "pre-commit>=4.2.0",
+    "ruff>=0.12.0",
+    "textual-dev>=1.7.0",
+]
+
+
+######### CLI plugin setup #########
+# Standalone CLI for copick-plugin-test
+[project.scripts]
+copick-plugin-demo = "copick.cli.cli:main"
+
+# Commands that will be added to the main "copick" CLI group
+# i.e.  copick mypackage --option
+[project.entry-points."copick.commands"]
+mypackage = "copick_plugin_demo.cli.cli:mypackage"
+
+# Commands that will be added to the "copick inference" CLI group
+# i.e.  copick inference mymodel-infer --option
+[project.entry-points."copick.inference.commands"]
+mymodel-infer = "copick_plugin_demo.cli.cli:mymodel_infer"
+
+# Commands that will be added to the "copick training" CLI group
+# i.e.  copick training mymodel-train --option
+[project.entry-points."copick.training.commands"]
+mymodel-train = "copick_plugin_demo.cli.cli:mymodel_train"
+
+# Commands that will be added to the "copick evaluation" CLI group
+# i.e.  copick evaluation myscore --option
+[project.entry-points."copick.evaluation.commands"]
+myscore = "copick_plugin_demo.cli.cli:myscore"
+
+# Commands that will be added to the "copick process" CLI group
+# i.e.  copick process mymethod --option
+[project.entry-points."copick.process.commands"]
+mymethod = "copick_plugin_demo.cli.cli:mymethod"
+
+# Commands that will be added to the "copick convert" CLI group
+# i.e.  copick convert myconverter --option
+[project.entry-points."copick.convert.commands"]
+myconverter = "copick_plugin_demo.cli.cli:myconverter"
+
+######### Versioning/Linting #########
+[tool.hatch.version]
+path = "src/copick_plugin_demo/__init__.py"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.black]
+line-length = 120
+target_version = ['py311']
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+exclude = [
+    "mkdocs.yml",
+]
+
+[tool.ruff.lint]
+select = [
+    "E", "W",  # pycodestyle
+    "F",       # pyflakes
+    "B",       # bugbear
+    "I",       # isort
+    "N",       # pep8-naming
+    "ASYNC",   # async
+    "COM",     # commas
+    "C4",      # comprehensions
+    "DTZ",     # datetimez
+    "ISC",     # implicit-str-concat
+    "G",       # logging-format
+    "T20",     # print
+    "SIM",     # simplify
+]
+ignore = [
+    "G004",   # logging format
+    "W293",   # blank line contains whitespace
+    "B008",   # Do not perform calls in argument defaults
+    "B905",   # `zip()` without an explicit `strict=` parameter
+    "N802",   # Function name should be lowercase
+    "N805",   # First argument of a method should be named `self`
+    "N806",   # Variable in function should be lowercase
+    "N999",   # Invalid module name
+    "E501",   # line too long
+    "C408",   # rewrite empty built-ins as literals
+    "T201",   # print statements.
+    "DTZ007", # Datetime objects without timezones.
+    "DTZ005", # More datetimes without timezones.
+]
+
+[tool.ruff.lint.isort]
+known-first-party =["common"]
+
+[tool.ruff.lint.flake8-quotes]
+docstring-quotes = "double"
+
+# https://docs.pytest.org/en/latest/reference/customize.html
+[tool.pytest.ini_options]
+minversion = "6.0"
+testpaths = ["tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "@overload",
+    "except ImportError",
+    "pass",
+]
